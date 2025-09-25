@@ -1,15 +1,4 @@
 {
-  "functions": {
-    "src/app/api/generate-player-pdf/route.ts": {
-      "maxDuration": 30
-    },
-    "src/app/api/security/rls-audit/route.ts": {
-      "maxDuration": 60
-    },
-    "src/app/api/setup-rls/route.ts": {
-      "maxDuration": 45
-    }
-  },
   "regions": ["arn1"],
   "headers": [
     {
