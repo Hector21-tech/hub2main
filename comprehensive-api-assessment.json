@@ -1,0 +1,188 @@
+{
+  "timestamp": "2025-09-20T23:12:04.758Z",
+  "executionTime": 4810,
+  "baseUrl": "http://localhost:3002",
+  "health": {
+    "overall": "healthy",
+    "healthScore": 100,
+    "criticalFailures": 0,
+    "endpoints": [
+      {
+        "path": "/api/hello",
+        "status": "healthy",
+        "httpStatus": 200,
+        "responseTime": 319,
+        "error": null,
+        "critical": true
+      },
+      {
+        "path": "/api/test-db",
+        "status": "healthy",
+        "httpStatus": 200,
+        "responseTime": 290,
+        "error": null,
+        "critical": true
+      },
+      {
+        "path": "/api/players?tenantId=cluqp37cs000108l59hl79k1l",
+        "status": "healthy",
+        "httpStatus": 200,
+        "responseTime": 351,
+        "error": null,
+        "critical": true
+      },
+      {
+        "path": "/api/requests?tenantId=cluqp37cs000108l59hl79k1l",
+        "status": "healthy",
+        "httpStatus": 200,
+        "responseTime": 271,
+        "error": null,
+        "critical": true
+      },
+      {
+        "path": "/api/trials?tenantId=cluqp37cs000108l59hl79k1l",
+        "status": "healthy",
+        "httpStatus": 200,
+        "responseTime": 236,
+        "error": null,
+        "critical": true
+      },
+      {
+        "path": "/api/dashboard/stats?tenantId=cluqp37cs000108l59hl79k1l",
+        "status": "healthy",
+        "httpStatus": 200,
+        "responseTime": 3227,
+        "error": null,
+        "critical": true
+      }
+    ],
+    "uptime": 100
+  },
+  "performance": {
+    "benchmarks": {
+      "/api/hello": {
+        "iterations": 5,
+        "successful": 5,
+        "failed": 0,
+        "avg": 79,
+        "min": 8,
+        "max": 289,
+        "p95": 289
+      },
+      "/api/players?tenantId=cluqp37cs000108l59hl79k1l": {
+        "iterations": 5,
+        "successful": 5,
+        "failed": 0,
+        "avg": 240,
+        "min": 120,
+        "max": 384,
+        "p95": 384
+      },
+      "/api/dashboard/stats?tenantId=cluqp37cs000108l59hl79k1l": {
+        "iterations": 5,
+        "successful": 5,
+        "failed": 0,
+        "avg": 637,
+        "min": 8,
+        "max": 3147,
+        "p95": 3147
+      }
+    },
+    "issues": [],
+    "recommendations": []
+  },
+  "security": {
+    "score": 67,
+    "status": "moderate",
+    "vulnerabilities": [
+      {
+        "test": "rate_limiting",
+        "vulnerable": true,
+        "details": "No rate limiting detected (may be configured for different endpoints)"
+      },
+      {
+        "test": "security_headers",
+        "vulnerable": true,
+        "details": "Missing security headers: x-frame-options, x-content-type-options, x-xss-protection, strict-transport-security",
+        "severity": "low"
+      }
+    ],
+    "strengths": [
+      {
+        "test": "authentication",
+        "vulnerable": false,
+        "details": "Protected endpoints properly require authentication"
+      },
+      {
+        "test": "tenant_isolation",
+        "vulnerable": false,
+        "details": "Tenant isolation appears to be working (both requests handled separately)"
+      },
+      {
+        "test": "input_validation",
+        "vulnerable": false,
+        "details": "Input validation appears to be working properly"
+      },
+      {
+        "test": "sql_injection",
+        "vulnerable": false,
+        "details": "No SQL injection vulnerabilities detected"
+      }
+    ],
+    "recommendations": [
+      {
+        "issue": "rate_limiting",
+        "recommendation": "Configure rate limiting to prevent abuse",
+        "severity": "medium"
+      },
+      {
+        "issue": "security_headers",
+        "recommendation": "Add security headers using middleware",
+        "severity": "low"
+      }
+    ]
+  },
+  "dependencies": {
+    "total": 52,
+    "critical": 4,
+    "versions": {
+      "next": "14.0.4",
+      "@supabase/supabase-js": "^2.57.4",
+      "@prisma/client": "^5.7.1",
+      "typescript": "^5.3.3"
+    },
+    "issues": []
+  },
+  "recommendations": [
+    {
+      "category": "security",
+      "priority": "high",
+      "recommendation": "Implement comprehensive authentication for all API endpoints",
+      "impact": "Prevents unauthorized access to sensitive data"
+    },
+    {
+      "category": "performance",
+      "priority": "medium",
+      "recommendation": "Add caching layer for dashboard statistics API",
+      "impact": "Reduces database load and improves response times"
+    },
+    {
+      "category": "monitoring",
+      "priority": "high",
+      "recommendation": "Set up automated health checks with alerting",
+      "impact": "Enables proactive issue detection and resolution"
+    },
+    {
+      "category": "security",
+      "priority": "medium",
+      "recommendation": "Add security headers to all API responses",
+      "impact": "Improves client-side security posture"
+    },
+    {
+      "category": "performance",
+      "priority": "low",
+      "recommendation": "Implement API response compression",
+      "impact": "Reduces bandwidth usage and improves load times"
+    }
+  ]
+}

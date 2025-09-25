@@ -1,0 +1,63 @@
+{
+  "functions": {
+    "src/app/api/generate-player-pdf/route.ts": {
+      "maxDuration": 30
+    },
+    "src/app/api/security/rls-audit/route.ts": {
+      "maxDuration": 60
+    },
+    "src/app/api/setup-rls/route.ts": {
+      "maxDuration": 45
+    }
+  },
+  "regions": ["arn1"],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/dashboard",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/media/avatar-proxy",
+      "destination": "/api/media/avatar-proxy"
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "timestamp": "2025-09-20T23:05:53.314Z",
+  "summary": {
+    "total": 12,
+    "healthy": 6,
+    "warnings": 6,
+    "errors": 0,
+    "healthScore": 50
+  },
+  "performance": {
+    "totalTestTime": 3598,
+    "avgResponseTime": 298,
+    "maxResponseTime": 1875,
+    "minResponseTime": 4
+  },
+  "security": {
+    "authProtected": 0,
+    "rateLimited": 0,
+    "tenantIsolated": 5
+  },
+  "endpoints": [
+    {
+      "path": "/api/hello",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Basic health check",
+      "status": "healthy",
+      "responseTime": 46,
+      "httpStatus": 200,
+      "error": null,
+      "response": {
+        "success": true,
+        "message": "API endpoint is working!",
+        "timestamp": "2025-09-20T23:05:49.763Z",
+        "env_check": {
+          "database_url": true,
+          "supabase_url": true
+        }
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/test-db",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Database connection test",
+      "status": "healthy",
+      "responseTime": 422,
+      "httpStatus": 200,
+      "error": null,
+      "response": {
+        "success": true,
+        "message": "Database connection successful",
+        "timestamp": [
+          {
+            "current_time": "2025-09-20T23:05:50.115Z"
+          }
+        ],
+        "database_url": "configured"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/players?tenantId=test-tenant",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Players list API",
+      "status": "healthy",
+      "responseTime": 586,
+      "httpStatus": 200,
+      "error": null,
+      "response": {
+        "success": true,
+        "data": []
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": true
+      }
+    },
+    {
+      "path": "/api/requests?tenantId=test-tenant",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Requests list API",
+      "status": "healthy",
+      "responseTime": 338,
+      "httpStatus": 200,
+      "error": null,
+      "response": {
+        "success": true,
+        "data": []
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": true
+      }
+    },
+    {
+      "path": "/api/trials?tenantId=test-tenant",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Trials list API",
+      "status": "healthy",
+      "responseTime": 280,
+      "httpStatus": 200,
+      "error": null,
+      "response": {
+        "success": true,
+        "data": []
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": true
+      }
+    },
+    {
+      "path": "/api/calendar/events?tenantId=test-tenant",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Calendar events API",
+      "status": "client_error",
+      "responseTime": 7,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": true
+      }
+    },
+    {
+      "path": "/api/dashboard/stats?tenantId=test-tenant",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Dashboard statistics API",
+      "status": "healthy",
+      "responseTime": 1875,
+      "httpStatus": 200,
+      "error": null,
+      "response": {
+        "success": true,
+        "data": {
+          "overview": {
+            "totalPlayers": 0,
+            "totalRequests": 0,
+            "totalTrials": 0,
+            "successRate": 0
+          },
+          "players": {
+            "total": 0,
+            "thisMonth": 0,
+            "growth": 0,
+            "byPosition": {},
+            "recent": []
+          },
+          "requests": {
+            "total": 0,
+            "active": 0,
+            "byStatus": {},
+            "byCountry": {},
+            "recent": []
+          },
+          "trials": {
+            "total": 0,
+            "upcoming": 0,
+            "completed": 0,
+            "pendingEvaluations": 0,
+            "next7Days": 0,
+            "successRate": 0,
+            "recent": []
+          },
+          "transferWindows": {
+            "active": 0,
+            "upcoming": 0,
+            "expiring": 0
+          },
+          "alerts": [],
+          "lastUpdated": "2025-09-20T23:05:51.474Z"
+        }
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": true
+      }
+    },
+    {
+      "path": "/api/setup-rls",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "RLS setup utility",
+      "status": "client_error",
+      "responseTime": 9,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/migrate",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Database migration utility",
+      "status": "client_error",
+      "responseTime": 5,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/organizations",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Organizations API",
+      "status": "client_error",
+      "responseTime": 5,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/debug",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Debug information API",
+      "status": "client_error",
+      "responseTime": 4,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/test-crud",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "CRUD testing API",
+      "status": "client_error",
+      "responseTime": 4,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    }
+  ],
+  "issues": [
+    {
+      "path": "/api/calendar/events?tenantId=test-tenant",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Calendar events API",
+      "status": "client_error",
+      "responseTime": 7,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": true
+      }
+    },
+    {
+      "path": "/api/setup-rls",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "RLS setup utility",
+      "status": "client_error",
+      "responseTime": 9,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/migrate",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Database migration utility",
+      "status": "client_error",
+      "responseTime": 5,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/organizations",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Organizations API",
+      "status": "client_error",
+      "responseTime": 5,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/debug",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "Debug information API",
+      "status": "client_error",
+      "responseTime": 4,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    },
+    {
+      "path": "/api/test-crud",
+      "method": "GET",
+      "requiresAuth": false,
+      "description": "CRUD testing API",
+      "status": "client_error",
+      "responseTime": 4,
+      "httpStatus": 401,
+      "error": null,
+      "response": {
+        "error": "Unauthorized: Authentication required"
+      },
+      "security": {
+        "hasAuth": false,
+        "rateLimit": false,
+        "tenantIsolation": false
+      }
+    }
+  ]
+}
