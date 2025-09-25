@@ -53,7 +53,11 @@
       "WebFetch(domain:hub2-bm677d0ze-hector-bataks-projects.vercel.app)",
       "WebFetch(domain:hub2-c5gqkvccx-hector-bataks-projects.vercel.app)",
       "WebFetch(domain:hub2-i0ue7w36z-hector-bataks-projects.vercel.app)",
-      "WebFetch(domain:hub2-47tvf6deb-hector-bataks-projects.vercel.app)"
+      "WebFetch(domain:hub2-47tvf6deb-hector-bataks-projects.vercel.app)",
+      "Bash(dir:*)",
+      "Bash(git remote remove:*)",
+      "Bash(git remote add:*)",
+      "WebFetch(domain:hub2main-hu73uvioj-hector-bataks-projects.vercel.app)"
     ],
     "deny": [],
     "ask": []

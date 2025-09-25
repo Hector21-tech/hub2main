@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Make OpenAI optional to prevent build failures
+let openai: OpenAI | null = null
+if (process.env.OPENAI_API_KEY) {
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +17,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Player data is required' },
         { status: 400 }
+      )
+    }
+
+    // Check if OpenAI is available
+    if (!openai) {
+      return NextResponse.json(
+        { error: 'OpenAI API key not configured' },
+        { status: 503 }
       )
     }
 
